@@ -1,0 +1,16 @@
+clear; hold on;
+f = @(x) 4*x.^5 - 5*x.^4 -20*x.^3 +10*x.^2 +40*x +10; g = @(x) 20*x.^4 -20*x.^3 -60*x.^2 +20*x +40;
+h = @(x) 80*x.^3 -60*x.^2 -120*x +20;
+fL = @(al,xk,dk) f(xk) + al.*g(xk)*dk;
+fQ = @(al,xk,dk) f(xk) + al.*g(xk)*dk + 0.5*(al.*dk).^2*h(xk);
+xmin = -2; xmax = 2.5;
+x = xmin:0.1:xmax;
+plot(x,f(x),'k');
+dk =1;
+xk = -0.5;
+al = -1.5:.01:1.75;
+x = xk + al.*dk;
+plot(x,fL(al,xk,dk),'b');
+plot(x,fQ(al,xk,dk),'g');
+ymin=ylim;
+plot([xk,xk],[f(xk),ymin(1)],':or');
