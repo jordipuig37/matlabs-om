@@ -7,7 +7,7 @@ function [x, k] = guoa(x, f, g, gg, almax, almin, c1, c2, rho, max_it, newton)
     while norm(g(x)) >= 10^-6 && k < max_it
         % gradient method:
         d = - g(x);
-        if newton
+        if newton == 1
         % newton method
             d = d / gg(x);
         end
