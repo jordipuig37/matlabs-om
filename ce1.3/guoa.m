@@ -14,6 +14,6 @@ function [x, k] = guoa(x, f, g, gg, almax, almin, c1, c2, rho, max_it, newton)
         al = uo_BLS(x, d, f, g, almax, almin, rho, c1, c2, iW);
         x_aux = x;
         x=x+al*d; k=k+1;
-        fprintf('%d   %d\n', (x_aux+0.739085)/(x++0.739085), (x_aux+0.739085)/((x++0.739085)^2))
+        fprintf('%d   %d\n', (x_aux+0.739085)/(x+0.739085), (x_aux+0.739085)/((x+0.739085)^2))
     end
 end
