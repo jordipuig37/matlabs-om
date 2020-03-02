@@ -1,4 +1,5 @@
 function [d, b] = descent_dir(isd, x, x_1, f, g, h)
+    b = 0;
     if isd == 1
         d = - g(x);
     elseif isd == 2
@@ -13,5 +14,7 @@ function [d, b] = descent_dir(isd, x, x_1, f, g, h)
 
     elseif isd == 3
         d = 0; % encara no sé
+    else
+        d = 0;
     end
 end
