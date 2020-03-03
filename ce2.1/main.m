@@ -33,10 +33,9 @@ fprintf('almax= %2d, almin= %3.1e, rho= %4.2f\n',almax,almin,rho);
 fprintf('c1= %3.2f, c2= %3.2f, iW= %1d\n',c1,c2,iW);
 fprintf('isd= %1d, icg= %1d, irc= %1d, nu= %3.1f\n',isd,icg,irc,nu);
 fprintf('k x(1) x(2) iW g''*d ||g|| r\n');
-for k = 1:niter
+for k = 1:niter-1
     fprintf('%5d %7.4f %7.4f %3d %+3.1e %4.2e %3.1e\n', k, xk(1,k), xk(2,k), iWk(k), gdk(k), norm(gk(:,k)), rk(k));
 end
 fprintf(' k x(1) x(2) iW g''*d ||g|| r\n[om_uo_FDM_CE21]\n');
 xylim=[0 0 0 0];
 subplot(2,1,1); om_uo_solve_plot(f, xk, gk, xylim, 1, 0); subplot(2,1,2); om_uo_solve_plot(f, xk, gk, xylim, 2, 0);
-
