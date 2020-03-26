@@ -1,20 +1,18 @@
-% problem:
-f = @(x) x(1)^2 + x(2)^3 + 3*x(1)*x(2);
-g = @(x) [ 2*x(1)+3*x(2) ; 3*x(2)^2 + 3*x(1)];
-h = @(x) [];
-x = [-3;-1];
-
+f = @(x) 100 * (x(2)-x(1)^2)^2 + (1-x(1))^2;
+g = @(x) diff(f(x));
+h = @(x) diff(g(x));
+x = [-1; 2];
 % Input parameters.
  % Stopping criterium:
 epsG = 10^-6; kmax = 1500;
  % Linesearch:
 almax = 2; almin = 10^-3; rho=0.5; c1=0.01; c2=0.45; iW = 2;
  % Search direction:
-isd = 3; icg = 2; irc = 0 ; nu = 0.1;
+isd = 1; icg = 2; irc = 0 ; nu = 0.1;
 
 % Optimization
 [xk,dk,alk,iWk,betak,Hk] = om_uo_solve(x,f,g,h,epsG,kmax,almax,almin,rho,c1,c2,iW,isd,icg,irc,nu);
-save('uo_FDM_CE21.mat','f','g','h','epsG','kmax','almax','almin','rho','c1','c2','iW','isd','icg','irc','nu','xk','dk','alk','iWk','betak');
+save('uo_FDM_CE23.mat','f','g','h','epsG','kmax','almax','almin','rho','c1','c2','iW','isd','icg','irc','nu','xk','dk','alk','iWk','betak');
 
 % Output
 niter = size(xk,2); xo = xk(:,niter); fk = []; gk = []; rk = []; gdk = [];
@@ -38,6 +36,7 @@ for k = 1:niter-1
     fprintf('%5d %7.4f %7.4f %3d %+3.1e %4.2e %3.1e\n', k, xk(1,k), xk(2,k), iWk(k), gdk(k), norm(gk(:,k)), rk(k));
 end
 fprintf('   k x(1)  x(2)    iW  g''*d   ||g||   r\n[om_uo_FDM_CE21]\n');
+
 xylim=[0 0 0 0];
 subplot(1,2,1);
 om_uo_solve_plot(f, xk, gk, xylim, 1, 0);

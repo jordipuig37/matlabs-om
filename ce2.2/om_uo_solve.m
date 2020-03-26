@@ -60,7 +60,7 @@ function [xk,dk,alk,iWk,betak,Hk] = om_uo_solve(x,f,g,h,epsG,kmax,almax,almin,rh
     end
     function [xk,dk,alk,iWk] = gradient(x, f, g, epsG, kmax, c1, c2, almax, almin, rho, iW)
         xk = []; dk= []; alk = [];iWk = [];
-        xk = [x];
+        xk = [x];  k = 0;
         while norm(g(x)) > epsG && k < kmax
             d = -g(x);
             dk = [dk, d];

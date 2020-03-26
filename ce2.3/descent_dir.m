@@ -1,4 +1,4 @@
-function [d, b] = descent_dir(isd, irc, x, x_1, d_1, f, g, H, nu, k)
+function [d, b, H] = descent_dir(isd, irc, x, x_1, d_1, f, g, H, nu, k)
     b = 0;
     if isd == 1
         % gradient method

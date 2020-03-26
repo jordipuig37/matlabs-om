@@ -18,7 +18,7 @@ function [al, iWout] = uo_BLS(x,d,f,g,almax,almin,rho,c1,c2,iW)
     end
 
     al = almax;
-    while al > almin & not(cond(al))
+    while al > almin && not(cond(al))
         al = al * rho;
     end
 

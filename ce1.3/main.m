@@ -8,9 +8,9 @@ c1 = 0.1; c2 = 0.5;
 % initial point
 x = 2.302774;
 % 0 = gradient method, 1 = newton method
-newt = 0c;
+newt = 0;
 
 fprintf('rk              Mk\n')
 [optima, it] = guoa(x, f, g, gg, almax, almin, c1, c2, rho, 10000, newt);
 
-fprintf('Mínim %d trobat en %d operacions des de %d\n', [optima, it, x])
+fprintf('Mï¿½nim %d trobat en %d operacions des de %d\n', [optima, it, x])
